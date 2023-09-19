@@ -5,11 +5,10 @@
     <style>
         body 
         {
-            /*background-image: linear-gradient( 180deg, hwb(190 40% 0%) 0%, hsl(0deg 0% 100%) 100%);*/
-            /*background-image: linear-gradient(to bottom, #fcecfc 0%,#fba6e1 98%,#fd89d7 100%,#ff7cd8 100%);*/
-            /*background-color: black;*/
+            background: #121FCF;
+            background: repeating-radial-gradient(circle farthest-corner at center center, #121FCF 0%, #3657F7 10%, #3055CF 5%);
+
             font-family: "Lucida Console", "Courier New", monospace;
-            background-image: linear-gradient(to top, #000000 0%,#1c1d1d 100%);
             height: 100%;
             margin: 0;
             background-repeat: no-repeat;
@@ -24,8 +23,8 @@
         .nekbar-title-text
         {
             font-size: 200px;
-            color: red;
-            border: 3px solid rgb(255, 0, 0);
+            color: rgb(255, 255, 255);
+            border: 3px solid rgb(255, 255, 255);
             border-radius: 10px; 
             padding: 10px;
         }
@@ -42,18 +41,38 @@
             }
         }
     </style>
+
+    <script>
+        var fart = 1;
+        const color = [];
+        color.push("red", "black", "yellow", "coral");
+
+        setInterval(myTimer, 1000);
+
+        function myTimer() 
+        {
+            fart ++;
+            if (fart > 4) {
+                fart = 0;
+            }
+            document.body.style.background = color[fart];
+
+            console.log(fart);
+            console.log(color[fart]);
+        }
+    </script>
 </head>
 
 
 <body>
     <div class="title-container">
         <div>
-            <p class="nekbar-title-text"> NEK.COM </p>
+            <p class="nekbar-title-text"> OM OSS </p>
         </div>
     </div>
     <div class="title-container">
         <div>
-            <p class="content-text"> Välkommen till NEK.COM, Noas Episka Klubb. NEK är dock inte bara en förkortning, ordet står för effektivitet, storhet och framförallt pengar. Vi älskar pengar. </p>
+            <p class="content-text"> Elektronisk mail: thicbruhllc@gmail.com </p>
         </div>
     </div>
 </body>

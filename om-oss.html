@@ -3,10 +3,19 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        @keyframes example 
+        {
+            from {background: repeating-radial-gradient(circle farthest-corner at center center, #121FCF 0%, #3657F7 10%, #3055CF 5%);}
+            to {background: repeating-radial-gradient(circle farthest-corner at center center, #121FCF 0%, #3657F7 10%, #3055CF 100%);}
+        }
+        
         body 
         {
-            background: #121FCF;
-            background: repeating-radial-gradient(circle farthest-corner at center center, #121FCF 0%, #3657F7 10%, #3055CF 5%);
+            /*background: #121FCF;*/
+            /*background: repeating-radial-gradient(circle farthest-corner at center center, #121FCF 0%, #3657F7 10%, #3055CF 5%);*/
+
+            animation-name: example;
+            animation-duration: 1s;
 
             font-family: "Lucida Console", "Courier New", monospace;
             height: 100%;
@@ -43,7 +52,7 @@
     </style>
 
     <script>
-        var fart = 1;
+        /*var fart = 1;
         const color = [];
         color.push("red", "black", "yellow", "coral");
 
@@ -59,7 +68,7 @@
 
             console.log(fart);
             console.log(color[fart]);
-        }
+        }*/
     </script>
 </head>
 

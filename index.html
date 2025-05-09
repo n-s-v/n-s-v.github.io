@@ -101,6 +101,9 @@ a:active {
       /*animation: spinY 4s linear infinite;
       transform-style: preserve-3d;*/
     }
+    .spinner {
+  will-change: transform;
+}
 
     @keyframes slideLeft {
       to {
@@ -221,7 +224,8 @@ text-shadow: 0 3px 0px rgba(0, 0, 0, 1);
     lastTime = time;
     rotation += (360 / 4000) * delta; // 360° på 4s
     spinner.style.transform = `rotateY(${rotation % 360}deg)`;
-    localStorage.setItem('rotation', rotation); // Uppdatera localStorage
+    localStorage.setItem('rotation', rotation % 360); //% 360 kanske löser lagget?
+ // Uppdatera localStorage
     requestAnimationFrame(rotate);
   }
 

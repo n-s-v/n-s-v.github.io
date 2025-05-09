@@ -203,17 +203,9 @@ text-shadow: 0 3px 0px rgba(0, 0, 0, 1);
   // SPINNER KOD
 
   const spinner = document.querySelector('.spinner');
-
-  // Lista över dina egna sidor
-  const allowedReferrers = ['index.html', 'videoarbete_01.html'];
-
-  // Om man INTE kommer från någon av dina sidor: nollställ
-  const cameFrom = document.referrer.split('/').pop();
-  if (!allowedReferrers.includes(cameFrom)) {
-    localStorage.setItem('rotation', '0');
-  }
-
   let rotation = parseFloat(localStorage.getItem('rotation')) || 0;
+
+  // Starta från sparad vinkel
   spinner.style.transform = `rotateY(${rotation}deg)`;
 
   let lastTime = performance.now();
@@ -223,11 +215,12 @@ text-shadow: 0 3px 0px rgba(0, 0, 0, 1);
     lastTime = time;
     rotation += (360 / 4000) * delta; // 360° på 4s
     spinner.style.transform = `rotateY(${rotation % 360}deg)`;
-    localStorage.setItem('rotation', rotation);
+    localStorage.setItem('rotation', rotation); // Uppdatera localStorage
     requestAnimationFrame(rotate);
   }
 
   requestAnimationFrame(rotate);
+
 </script>
 </body>
 </html>

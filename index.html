@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>Röd Glimt 2.0</title>
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: #4b0000;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      position: relative;
+    }
+
+    /* LINK FÄRGER */ 
+a:link {
+  color: #DBB665;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #FFF9BC;
+  background-color: #FFF9BC;
+  text-shadow: 0 3px 0px rgba(0, 0, 0, 0);
+}
+
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+    .checkerboard {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background-image:
+        linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.05) 75%),
+        linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.05) 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
+      animation: moveChecker 20s linear infinite;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes moveChecker {
+      from { transform: translate(0, 0); }
+      to { transform: translate(-100px, -100px); }
+    }
+
+    @keyframes spinY {
+      from { transform: rotateY(0deg); }
+      to { transform: rotateY(360deg); }
+    }
+
+    .content-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    .center-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: translateX(0);
+      animation: slideLeft 1s ease forwards;
+      animation-delay: 1s;
+      animation-fill-mode: forwards;
+    }
+
+    .title-image,
+    .spinner {
+      width: 250px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .spinner {
+      animation: spinY 4s linear infinite;
+      transform-style: preserve-3d;
+    }
+
+    @keyframes slideLeft {
+      to {
+        transform: translateX(-150px);
+      }
+    }
+
+    .about-section {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 180px); /* justera beroende på avstånd från mitten */
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  color: #FFF9BC;
+  font-family: 'MedievalSharp', cursive;
+  text-align: left;
+  max-width: 300px;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 2s;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 250px; /* samma höjd som spinnern om den är 250px */
+text-shadow: 0 3px 0px rgba(0, 0, 0, 1);
+}
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideRight {
+  from {
+    transform: translateX(-150px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.reverse-slide {
+  animation: slideRight 1s ease forwards;
+}
+
+.reverse-fade {
+  animation: fadeOut 1s ease forwards;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <div class="checkerboard"></div>
+
+  <div class="content-wrapper">
+    <div class="center-container">
+      <img src="noa text - Copy.png" alt="Text ovanför" class="title-image">
+      <img src="goy - Copy.png" alt="Snurrande Bild" class="spinner">
+    </div>
+  </div>
+
+  <div class="about-section">
+    <h1>Om Mig</h1>
+    <p>Kontakt: noa.stampes.vejrich@gmail.com</p>
+    <a href="videoarbete_01.html" id="link1">Videoarbete_01</a>
+    <a href="videoarbete_02.html" id="link2">Videoarbete_02</a>
+  </div>
+
+  <script>
+  function handleLinkClick(event, url) {
+    event.preventDefault(); // stoppa direkt navigation
+
+    const container = document.querySelector('.center-container');
+    const about = document.querySelector('.about-section');
+
+    // Lägg till reverse-animationer
+    container.classList.add('reverse-slide');
+    about.classList.add('reverse-fade');
+
+    // Vänta tills animationerna är klara (1s), sedan navigera
+    setTimeout(() => {
+      window.location.href = url;
+    }, 1000);
+  }
+
+  document.getElementById('link1').addEventListener('click', function(e) {
+    handleLinkClick(e, 'videoarbete_01.html');
+  });
+
+  document.getElementById('link2').addEventListener('click', function(e) {
+    handleLinkClick(e, 'videoarbete_02.html');
+  });
+</script>
+</body>
+</html>

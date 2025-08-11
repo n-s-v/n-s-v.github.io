@@ -2,9 +2,9 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8">
-  <title>Röd Glimt 2.0</title>
+  <title>Röd Glimt 2.0 – Animation med Om Mig</title>
   <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
-  <style>
+    <style>
     body {
       margin: 0;
       padding: 0;
@@ -86,7 +86,7 @@ a:active {
       align-items: center;
       transform: translateX(0);
       animation: slideLeft 1s ease forwards;
-      animation-delay: 1s;
+      animation-delay: 0.25s;
       animation-fill-mode: forwards;
     }
 
@@ -101,6 +101,7 @@ a:active {
       /*animation: spinY 4s linear infinite;
       transform-style: preserve-3d;*/
     }
+
     .spinner {
   will-change: transform;
 }
@@ -122,7 +123,7 @@ a:active {
   text-align: left;
   max-width: 300px;
   animation: fadeIn 1s ease forwards;
-  animation-delay: 2s;
+  animation-delay: 0.5s;
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -171,18 +172,20 @@ text-shadow: 0 3px 0px rgba(0, 0, 0, 1);
   <div class="checkerboard"></div>
 
   <div class="content-wrapper">
-    <div class="center-container">
-      <img src="noa text - Copy.png" alt="Text ovanför" class="title-image">
-      <img src="goy - Copy.png" alt="Snurrande Bild" class="spinner">
-    </div>
+  <div class="center-container">
+    <img src="noa text - Copy.png" alt="Text ovanför" class="title-image">
+    <img src="goy - Copy.png" alt="Snurrande Bild" class="spinner">
   </div>
 
   <div class="about-section">
-    <a href="om_mig.html" id="link3">Om Mig</a>
-    <a href="videoarbete_01.html" id="link1">Videoarbete_01</a>
-    <a href="videoarbete_02.html" id="link2">Videoarbete_02</a>
+    <h1>Om Mig</h1>
+    <p>Självutbildad inom premiere pro, photoshop och after effects. Vissa kunskaper i blender samt unity. Gymnasie examen inom Natur-Samhälle.</p>
+    <p>Svenska - Modersmål. Engelska - Flytande Nivå. Franska - Gymnasial Nivå.</p>
+    <p>Nu när allt det tråkiga är sagt kan vi bli lite mer personliga! Drömmen är att redigera musikvideor men så länge jag får sitta och knappa i olika program på en dator är jag nöjd. I framtiden vill jag även inkludera mer mixed media i mina projekt.</p>
+    <p>Kontakt: noa.stampes.vejrich@gmail.com</p>
+    <a href="mig.html" id="tillbaka">Tillbaka</a>
   </div>
-
+</div>
   <script>
   function handleLinkClick(event, url) {
     event.preventDefault(); // stoppa direkt navigation
@@ -200,16 +203,8 @@ text-shadow: 0 3px 0px rgba(0, 0, 0, 1);
     }, 1000);
   }
 
-  document.getElementById('link1').addEventListener('click', function(e) {
-    handleLinkClick(e, 'videoarbete_01.html');
-  });
-
-  document.getElementById('link2').addEventListener('click', function(e) {
-    handleLinkClick(e, 'videoarbete_02.html');
-  });
-
-    document.getElementById('link3').addEventListener('click', function(e) {
-    handleLinkClick(e, 'om_mig.html');
+  document.getElementById('tillbaka').addEventListener('click', function(e) {
+    handleLinkClick(e, 'index.html');
   });
 
   // SPINNER KOD
@@ -227,12 +222,12 @@ text-shadow: 0 3px 0px rgba(0, 0, 0, 1);
     lastTime = time;
     rotation += (360 / 4000) * delta; // 360° på 4s
     spinner.style.transform = `rotateY(${rotation % 360}deg)`;
-    localStorage.setItem('rotation', rotation % 360); //% 360 kanske löser lagget?
- // Uppdatera localStorage
+        localStorage.setItem('rotation', rotation % 360); //% 360 kanske löser lagget? // Uppdatera localStorage
     requestAnimationFrame(rotate);
   }
 
   requestAnimationFrame(rotate);
+
 </script>
 </body>
 </html>

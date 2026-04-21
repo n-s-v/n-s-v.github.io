@@ -6,17 +6,18 @@
   <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      background-color: #4b0000;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: sans-serif;
-      position: relative;
-    }
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: #4b0000;
+  transition: background-color 1s ease; /* Denna rad möjliggör den mjuka övergången */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  position: relative;
+}
 
     /* LINK FÄRGER */ 
 a:link {
@@ -179,8 +180,12 @@ text-shadow: 0 3px 0px rgba(0, 0, 0, 1);
 
   <div class="about-section">
     <a href="om_mig.html" id="link3">Om Mig</a>
-    <a href="videoarbete_01.html" id="link1">Videoarbete_01</a>
-    <a href="videoarbete_02.html" id="link2">Videoarbete_02</a>
+    <p>- BGP -</p>
+    <a href="videoarbete_01.html" id="link1">BGP VISILINK</a>
+    <a href="videoarbete_02.html" id="link2">[BGP LEAKS] CHINESE GOV. VIDEO</a>
+    <p>- U99S -</p>
+    <a href="videoarbete_01.html" id="link1">zzz</a>
+    <a href="videoarbete_02.html" id="link2">zzz</a>
   </div>
 
   <script>
@@ -193,6 +198,11 @@ text-shadow: 0 3px 0px rgba(0, 0, 0, 1);
     // Lägg till reverse-animationer
     container.classList.add('reverse-slide');
     about.classList.add('reverse-fade');
+
+    // Starta färgövergången till mörkblå om vi är på väg till om_mig.html
+    if (url === 'om_mig.html') {
+      document.body.style.backgroundColor = '#000022'; // Mörkblå färg
+    }
 
     // Vänta tills animationerna är klara (1s), sedan navigera
     setTimeout(() => {

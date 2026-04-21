@@ -6,17 +6,18 @@
   <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
     <style>
     body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      background-color: #4b0000;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: sans-serif;
-      position: relative;
-    }
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: #020221; /* Ändrad till mörkblå */
+  transition: background-color 1s ease; /* Denna rad möjliggör den mjuka övergången */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  position: relative;
+}
 
     /* LINK FÄRGER */ 
 a:link {
@@ -179,10 +180,10 @@ text-shadow: 0 3px 0px rgba(0, 0, 0, 1);
 
   <div class="about-section">
     <h1>Om Mig</h1>
-    <p>Självutbildad inom premiere pro, photoshop och after effects. Vissa kunskaper i blender samt unity. Gymnasie examen inom Natur-Samhälle.</p>
-    <p>Svenska - Modersmål. Engelska - Flytande Nivå. Franska - Gymnasial Nivå.</p>
-    <p>Nu när allt det tråkiga är sagt kan vi bli lite mer personliga! Drömmen är att redigera musikvideor men så länge jag får sitta och knappa i olika program på en dator är jag nöjd. I framtiden vill jag även inkludera mer mixed media i mina projekt.</p>
-    <p>Kontakt: noa.stampes.vejrich@gmail.com</p>
+    <p>premiere pro after effects photoshop</p>
+    <p>svenska engelska franska</p>
+    
+    <p>noa.stampes.vejrich@gmail.com</p>
     <a href="mig.html" id="tillbaka">Tillbaka</a>
   </div>
 </div>
@@ -196,6 +197,11 @@ text-shadow: 0 3px 0px rgba(0, 0, 0, 1);
     // Lägg till reverse-animationer
     container.classList.add('reverse-slide');
     about.classList.add('reverse-fade');
+
+    // Starta färgövergången tillbaka till mörkröd när vi går till index.html
+    if (url === 'index.html') {
+      document.body.style.backgroundColor = '#4b0000'; // Mörkröd färg
+    }
 
     // Vänta tills animationerna är klara (1s), sedan navigera
     setTimeout(() => {

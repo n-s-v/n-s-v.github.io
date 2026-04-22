@@ -11,6 +11,7 @@ function handleLinkClick(event, url) {
 
     // Vänta 1 sekund (animationens längd) innan vi byter sida
     setTimeout(() => {
+        
         window.location.href = url;
     }, 1000);
 }

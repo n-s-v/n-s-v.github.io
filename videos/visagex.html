@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <link rel="stylesheet" href="../css_js/styles.css">
+  <link rel="stylesheet" href="../css_js/videostyle.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shaka-player@4.7.0/dist/controls.css">
+
+
 <script type="module" src="https://cdn.jsdelivr.net/npm/media-chrome@4/+esm"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/hls-video-element@1.1/+esm"></script>
 
@@ -18,46 +22,45 @@
     <img src="../assets/noa text - Copy.png" alt="Text ovanför" class="title-image">
     <img src="../assets/goy - Copy.png" alt="Snurrande Bild" class="spinner">
   </div>
-
   <div class="about-section">
   <h1>BGP VISAGE-X</h1>
-  <media-controller>
-  <mux-video
-    playsinline crossorigin
-    slot="media"
-    playback-id="Sc89iWAyNkhJ3P1rQ02nrEdCFTnfT01CZ2KmaEcxXfB008"
-    poster="https://image.mux.com/Sc89iWAyNkhJ3P1rQ02nrEdCFTnfT01CZ2KmaEcxXfB008/thumbnail.webp?time=13"
-  ></mux-video>
-  <media-settings-menu hidden anchor="auto">
-    <media-settings-menu-item>
-      Speed
-      <media-playback-rate-menu slot="submenu" hidden>
-        <div slot="title">Speed</div>
-      </media-playback-rate-menu>
-    </media-settings-menu-item>
-    <media-settings-menu-item>
-      Quality
-      <media-rendition-menu slot="submenu" hidden>
-        <div slot="title">Quality</div>
-      </media-rendition-menu>
-    </media-settings-menu-item>
-    <media-settings-menu-item>
-      Captions
-      <media-captions-menu slot="submenu" hidden>
-        <div slot="title">Captions</div>
-      </media-captions-menu>
-    </media-settings-menu-item>
-  </media-settings-menu>
-  <media-control-bar>
-    <media-play-button></media-play-button>
-    <media-time-range></media-time-range>
-    <media-settings-menu-button></media-settings-menu-button>
-  </media-control-bar>
-</media-controller>
-<p>(titta i fullscreen 2160p).. ( •̀ᴗ•́ )و ̑̑ <br>visuellt arbete och layout i after effects, sequencing i premire pro, grafik gjord i photoshop och kameraperson allan &lt3</p>
-    <a href="../index.html" id="tillbaka">Tillbaka</a>
+ <div data-shaka-player-container style="max-width:800px">
+  <video data-shaka-player id="video" style="width:100%;height:100%"></video>
+</div>
+  <p>(titta i fullscreen).. ( •̀ᴗ•́ )و ̑̑ <br>visuellt arbete och layout i after effects, sequencing i premiere pro, grafik gjord i photoshop och kameraperson allan &lt3</p>
+  <a href="../index.html" id="tillbaka">Tillbaka</a>
   </div>
 </div>
+
 <script src="../css_js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/shaka-player@4.7.0/dist/shaka-player.ui.js"></script>
+
+<script>
+async function initPlayer() {
+  const video = document.getElementById('video');
+  const ui = video['ui'];
+  const controls = ui.getControls();
+  const player = controls.getPlayer();
+
+  // 1. Customize Seekbar Colors via Javascript
+  const config = {
+    'seekBarColors': {
+      base: 'rgba(255, 255, 255, 0.3)',    // The unplayed part
+      buffered: 'rgba(255, 255, 255, 0.5)',// The pre-loaded part
+      played:  '#DBB665',                  // The played part (Brand Color)
+    }
+  };
+  ui.configure(config);
+
+  // 2. Load your MP4 Link
+  try {
+    await player.load('https://gamma.videonest.org/6de48f7e-389e-46fb-a45f-724e7771eec6_video_v5.mp4');
+  } catch (e) {
+    console.error('Error loading video', e);
+  }
+}
+
+document.addEventListener('shaka-ui-loaded', initPlayer);
+</script>
 </body>
 </html>
